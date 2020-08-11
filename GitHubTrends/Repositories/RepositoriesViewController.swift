@@ -9,7 +9,9 @@
 import UIKit
 
 class RepositoriesViewController: UIViewController {
+    @IBOutlet var tableView: UITableView!
     var viewModel: RepositoriesViewModelType!
+    private let cellIdentifier = "RepositoryCell"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +21,7 @@ class RepositoriesViewController: UIViewController {
     private func setUpUI() {
         setTitle()
         setUpSearchController()
+        setUpTableView()
     }
 
     private func setTitle() {
@@ -33,6 +36,10 @@ class RepositoriesViewController: UIViewController {
         search.obscuresBackgroundDuringPresentation = false
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.searchController = search
+    }
+
+    private func setUpTableView() {
+        tableView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier)
     }
 
 }

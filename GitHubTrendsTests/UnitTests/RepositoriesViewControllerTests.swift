@@ -25,14 +25,14 @@ class RepositoriesViewControllerTests: XCTestCase {
         reposViewController = nil
     }
 
-    func test_whenInitialized_setsTitleToGitHubTrends() {
+    func test_whenloadingIsDone_setsTitleToGitHubTrends() {
         let title = "GitHub Trends"
         reposViewController.loadViewIfNeeded()
 
         XCTAssertEqual(reposViewController.title, title)
     }
 
-    func test_whenInitialized_setsTitleTextColorToTintColor() {
+    func ttest_whenloadingIsDone_setsTitleTextColorToTintColor() {
         let textAttributesToCompare = [NSAttributedString.Key.foregroundColor: UIColor.tintColor]
         let _ = UINavigationController(rootViewController: reposViewController)
 
@@ -45,12 +45,24 @@ class RepositoriesViewControllerTests: XCTestCase {
         XCTAssertEqual(navTextAttributes, textAttributesToCompare)
     }
 
-    func test_whenInitialized_setsSearchController() {
+    func test_whenloadingIsDone_setsSearchController() {
         let _ = UINavigationController(rootViewController: reposViewController)
 
         reposViewController.loadViewIfNeeded()
 
         XCTAssertNotNil(reposViewController.navigationItem.searchController)
+    }
+
+    func test_whenloadingIsDone_hasATableView() {
+        reposViewController.loadViewIfNeeded()
+
+        XCTAssertNotNil(reposViewController.tableView)
+    }
+
+    func test_whenloadingIsDone_hasACellRegisterInTheTableView() {
+        reposViewController.loadViewIfNeeded()
+
+        XCTAssertNotNil(reposViewController.tableView.dequeueReusableCell(withIdentifier: "RepositoryCell"))
     }
 }
 
