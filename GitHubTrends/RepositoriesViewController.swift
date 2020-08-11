@@ -8,13 +8,13 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class RepositoriesViewController: UIViewController {
+
+    var viewModel: RepositoriesViewModelType!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
     }
-
-
 }
 
