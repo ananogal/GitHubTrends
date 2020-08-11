@@ -21,9 +21,7 @@ class GitHubTrendsTests: XCTestCase {
 //And I can filter then by name
 
     func test_whenIStartTheApp_thenIWillSeeAListOfTrendingRepositories() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let repositoriesVC = storyboard.instantiateViewController(identifier: "RepositoriesViewController")
-            as! RepositoriesViewController
+        let repositoriesVC = UIStoryboard.repositoriesViewController()
 
         let viewModel = RepositoriesViewModel()
         repositoriesVC.viewModel = viewModel

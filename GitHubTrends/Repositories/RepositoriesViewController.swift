@@ -18,11 +18,21 @@ class RepositoriesViewController: UIViewController {
 
     private func setUpUI() {
         setTitle()
+        setUpSearchController()
     }
 
     private func setTitle() {
         title = "GitHub Trends"
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.tintColor]
+    }
+
+    private func setUpSearchController() {
+        let search = UISearchController(searchResultsController: nil)
+        search.searchResultsUpdater = self
+        search.searchBar.placeholder = "Search"
+        search.obscuresBackgroundDuringPresentation = false
+        navigationItem.hidesSearchBarWhenScrolling = false
+        navigationItem.searchController = search
     }
 
 }

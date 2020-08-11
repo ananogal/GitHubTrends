@@ -23,9 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     private func createRepositoriesViewController() -> RepositoriesViewController {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let reposViewController = storyboard.instantiateViewController(identifier: "RepositoriesViewController")
-            as! RepositoriesViewController
+        let reposViewController = UIStoryboard.repositoriesViewController()
 
         let viewModel = RepositoriesViewModel()
         reposViewController.viewModel = viewModel

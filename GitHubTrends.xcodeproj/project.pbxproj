@@ -18,6 +18,7 @@
 		937A6E7E24E2CA8100D879AB /* RepositoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937A6E7D24E2CA8100D879AB /* RepositoriesViewModel.swift */; };
 		937A707B24E2E23800D879AB /* RepositoriesViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937A707A24E2E23800D879AB /* RepositoriesViewControllerTests.swift */; };
 		937A707F24E2F4FA00D879AB /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937A707E24E2F4FA00D879AB /* UIColorExtension.swift */; };
+		937A708324E2FBDB00D879AB /* UIStoryboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937A708224E2FBDB00D879AB /* UIStoryboardExtension.swift */; };
 		D5A569FEE532EB4934F8150B /* Pods_GitHubTrends.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5935C3C23BD820DEAD013397 /* Pods_GitHubTrends.framework */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +52,7 @@
 		937A6E7D24E2CA8100D879AB /* RepositoriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesViewModel.swift; sourceTree = "<group>"; };
 		937A707A24E2E23800D879AB /* RepositoriesViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesViewControllerTests.swift; sourceTree = "<group>"; };
 		937A707E24E2F4FA00D879AB /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		937A708224E2FBDB00D879AB /* UIStoryboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStoryboardExtension.swift; sourceTree = "<group>"; };
 		952AA3777C61B4EB73CCA93D /* Pods-GitHubTrends.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubTrends.release.xcconfig"; path = "Target Support Files/Pods-GitHubTrends/Pods-GitHubTrends.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -157,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				937A707E24E2F4FA00D879AB /* UIColorExtension.swift */,
+				937A708224E2FBDB00D879AB /* UIStoryboardExtension.swift */,
 			);
 			path = UIExtensions;
 			sourceTree = "<group>";
@@ -362,6 +365,7 @@
 				937A6E6024E2A05C00D879AB /* RepositoriesViewController.swift in Sources */,
 				937A707F24E2F4FA00D879AB /* UIColorExtension.swift in Sources */,
 				937A6E5C24E2A05C00D879AB /* AppDelegate.swift in Sources */,
+				937A708324E2FBDB00D879AB /* UIStoryboardExtension.swift in Sources */,
 				937A6E5E24E2A05C00D879AB /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

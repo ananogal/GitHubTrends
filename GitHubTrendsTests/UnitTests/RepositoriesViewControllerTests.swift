@@ -16,8 +16,7 @@ class RepositoriesViewControllerTests: XCTestCase {
     var mockViewModel: MockRepositoriesViewModel!
 
     override func setUpWithError() throws {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        reposViewController = (storyboard.instantiateViewController(identifier: "RepositoriesViewController") as! RepositoriesViewController)
+        reposViewController = UIStoryboard.repositoriesViewController()
         mockViewModel = MockRepositoriesViewModel()
         reposViewController.viewModel = mockViewModel
     }
@@ -44,6 +43,14 @@ class RepositoriesViewControllerTests: XCTestCase {
         let navTextAttributes = navController!.navigationBar.titleTextAttributes as! [NSAttributedString.Key : UIColor]
 
         XCTAssertEqual(navTextAttributes, textAttributesToCompare)
+    }
+
+    func test_whenInitialized_setsSearchController() {
+        let _ = UINavigationController(rootViewController: reposViewController)
+
+        reposViewController.loadViewIfNeeded()
+
+        XCTAssertNotNil(reposViewController.navigationItem.searchController)
     }
 }
 
