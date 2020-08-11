@@ -1,0 +1,6 @@
+framework module Pods_GitHubTrendsTests {
+  umbrella header "Pods-GitHubTrendsTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
