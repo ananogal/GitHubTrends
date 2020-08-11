@@ -33,9 +33,18 @@ class RepositoriesViewControllerTests: XCTestCase {
         XCTAssertEqual(reposViewController.title, title)
     }
 
+    func test_whenInitialized_setsTitleTextColorToTintColor() {
+        let textAttributesToCompare = [NSAttributedString.Key.foregroundColor: UIColor.tintColor]
+        let _ = UINavigationController(rootViewController: reposViewController)
 
+        reposViewController.loadViewIfNeeded()
 
+        let navController = reposViewController.navigationController
 
+        let navTextAttributes = navController!.navigationBar.titleTextAttributes as! [NSAttributedString.Key : UIColor]
+
+        XCTAssertEqual(navTextAttributes, textAttributesToCompare)
+    }
 }
 
 

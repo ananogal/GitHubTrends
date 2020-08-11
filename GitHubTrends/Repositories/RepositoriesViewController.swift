@@ -13,7 +13,22 @@ class RepositoriesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "GitHub Trends"
+        setUpUI()
     }
+
+    private func setUpUI() {
+        setTitle()
+    }
+
+    private func setTitle() {
+        title = "GitHub Trends"
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.tintColor]
+    }
+
 }
 
+extension RepositoriesViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+
+    }
+}
