@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -128,7 +128,6 @@
 				56C005945481D0F1103E8458 /* Pods-GitHubTrendsTests.debug.xcconfig */,
 				2A05F3755ABDB76EDCD14F40 /* Pods-GitHubTrendsTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -162,6 +161,7 @@
 				937A6E6A24E2A05F00D879AB /* Sources */,
 				937A6E6B24E2A05F00D879AB /* Frameworks */,
 				937A6E6C24E2A05F00D879AB /* Resources */,
+				486E71798666A26C2EF06EA6 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -232,6 +232,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		486E71798666A26C2EF06EA6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GitHubTrendsTests/Pods-GitHubTrendsTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GitHubTrendsTests/Pods-GitHubTrendsTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GitHubTrendsTests/Pods-GitHubTrendsTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		4F2CADCCD46E61AA33BDB1BA /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -500,7 +517,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 56C005945481D0F1103E8458 /* Pods-GitHubTrendsTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CQTY4N4T2A;
@@ -523,7 +540,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2A05F3755ABDB76EDCD14F40 /* Pods-GitHubTrendsTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CQTY4N4T2A;
