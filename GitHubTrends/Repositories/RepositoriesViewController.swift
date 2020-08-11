@@ -9,12 +9,11 @@
 import UIKit
 
 class RepositoriesViewController: UIViewController {
-
     var viewModel: RepositoriesViewModelType!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        title = "GitHub Trends"
     }
 }
 

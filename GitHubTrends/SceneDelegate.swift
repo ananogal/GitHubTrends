@@ -14,18 +14,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let repositoriesVC = storyboard.instantiateViewController(identifier: "RepositoriesViewController")
-            as! RepositoriesViewController
-
-        let viewModel = RepositoriesViewModel()
-        repositoriesVC.viewModel = viewModel
-
+        let reposViewController = createRepositoriesViewController()
         let window = UIWindow(windowScene: scene as! UIWindowScene)
-        window.rootViewController = UINavigationController(rootViewController: repositoriesVC)
+        window.rootViewController = UINavigationController(rootViewController: reposViewController)
         window.makeKeyAndVisible()
 
         self.window = window
+    }
+
+    private func createRepositoriesViewController() -> RepositoriesViewController {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let reposViewController = storyboard.instantiateViewController(identifier: "RepositoriesViewController")
+            as! RepositoriesViewController
+
+        let viewModel = RepositoriesViewModel()
+        reposViewController.viewModel = viewModel
+
+        return reposViewController
     }
 }
 
