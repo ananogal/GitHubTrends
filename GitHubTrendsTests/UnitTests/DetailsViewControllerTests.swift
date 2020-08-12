@@ -15,11 +15,12 @@ import RxTest
 class DetailsViewControllerTests: XCTestCase {
     var detailsVC: DetailsViewController!
     var viewModel: DetailsViewModelType!
+    var item: Repository!
 
     override func setUpWithError() throws {
         detailsVC = UIStoryboard.detailsViewController()
-        let item = Repository(name: "name", description: "description", stars: 1, avatar: "", author: "author")
-        viewModel = MockDetailsViewModel(item: item)
+        item = Repository(name: "name", description: "description", stars: 1, avatar: "", author: "author")
+        viewModel = DetailsViewModel(item: item)
         detailsVC.viewModel = viewModel
     }
 
@@ -28,7 +29,7 @@ class DetailsViewControllerTests: XCTestCase {
 
         detailsVC.loadViewIfNeeded()
 
-        XCTAssertEqual(detailsVC.title, viewModel.title)
+        XCTAssertEqual(detailsVC.title, item.name)
     }
 
     func test_whenloading_setsTheBackButtonTextToBack() {
@@ -64,7 +65,7 @@ class DetailsViewControllerTests: XCTestCase {
 
     func test_whenLoadingImage_setsTheAvatarImageUrl() {
         let item = Repository(name: "name", description: "description", stars: 1, avatar: "https://github.com/ananogal.png", author: "author")
-        viewModel = MockDetailsViewModel(item: item)
+        viewModel = DetailsViewModel(item: item)
         detailsVC.viewModel = viewModel
         detailsVC.loadViewIfNeeded()
 
@@ -74,26 +75,18 @@ class DetailsViewControllerTests: XCTestCase {
     func test_whenLoading_setsTheUserNameToAuthor() {
         detailsVC.loadViewIfNeeded()
 
-        XCTAssertEqual(detailsVC.nameLabel.text, viewModel.author)
-    }
-}
-
-class MockDetailsViewModel: DetailsViewModelType {
-    private let item: Repository
-
-    init(item:Repository) {
-        self.item = item
+        XCTAssertEqual(detailsVC.nameLabel.text, item.author)
     }
 
-    var title: String {
-        return item.name
+    func test_whenLoading_setsTheDescription() {
+        detailsVC.loadViewIfNeeded()
+
+        XCTAssertEqual(detailsVC.descriptionLabel.text, item.description)
     }
 
-    var avatarURL: URL? {
-        return URL(string: item.avatar)
-    }
-    
-    var author: String {
-        return item.author
+    func test_whenLoading_setsTitleOfStarsButoonToNumberOfStars() {
+        detailsVC.loadViewIfNeeded()
+
+        XCTAssertEqual(detailsVC.starsButton.title(for: .normal), "\(item.stars) Stars")
     }
 }

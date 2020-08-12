@@ -9,6 +9,7 @@
 import UIKit
 import MarkdownView
 import AlamofireImage
+import RxSwift
 
 class DetailsViewController: UIViewController {
     @IBOutlet var avatarImageView: UIImageView!
@@ -20,11 +21,13 @@ class DetailsViewController: UIViewController {
     @IBOutlet var forksButton: UIButton!
 
     var viewModel: DetailsViewModelType!
+    private let bag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
         setUpBindings()
+        viewModel.loadData()
     }
 
     private func setUpUI() {
@@ -34,7 +37,6 @@ class DetailsViewController: UIViewController {
     }
 
     private func setUpNavigationBar() {
-        title = viewModel.title
         let backButton = UIBarButtonItem()
         backButton.title = "Back"
         backButton.tintColor = UIColor.tintColor
@@ -66,6 +68,13 @@ class DetailsViewController: UIViewController {
     }
 
     private func setUpBindings() {
-        nameLabel.text = viewModel.author
+        viewModel.itemPublisher
+            .bind(onNext: { (item) in
+                self.title = item.name
+                self.nameLabel.text = item.author
+                self.descriptionLabel.text = item.description
+                self.starsButton.setTitle("\(item.stars) Stars", for: .normal)
+            })
+        .disposed(by: bag)
     }
 }

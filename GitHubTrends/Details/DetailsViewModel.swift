@@ -6,30 +6,29 @@
 //  Copyright © 2020 ananogal. All rights reserved.
 //
 
-import Foundation
+import RxSwift
 
 protocol DetailsViewModelType {
-    var title: String { get }
     var avatarURL: URL? { get }
-    var author: String { get }
+    var itemPublisher: PublishSubject<Repository> { get }
+    func loadData()
 }
 
 class DetailsViewModel: DetailsViewModelType {
     private let item: Repository
 
+    var itemPublisher = PublishSubject<Repository>()
+
     init(item: Repository) {
         self.item = item
-    }
-
-    var title: String {
-        return item.name
     }
 
     var avatarURL: URL? {
         return URL(string: item.avatar)
     }
 
-    var author: String {
-        return item.author
+    func loadData() {
+        itemPublisher.onNext(item)
+        itemPublisher.onCompleted()
     }
 }
