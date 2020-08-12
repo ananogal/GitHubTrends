@@ -22,4 +22,8 @@ class RepositoriesViewModel: RepositoriesViewModelType {
     }
 }
 
-struct Repository{}
+struct Repository {
+    let name: String
+    let description: String
+    let stars: Int
+}

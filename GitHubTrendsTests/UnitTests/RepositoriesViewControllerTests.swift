@@ -70,14 +70,27 @@ class RepositoriesViewControllerTests: XCTestCase {
 
         XCTAssertTrue(mockViewModel.loadDataWasCalled)
     }
+
+    func test_whenlodingIsDone_itSetsTableViewData() {
+        reposViewController.loadViewIfNeeded()
+
+        XCTAssertTrue(reposViewController.tableView.numberOfRows(inSection: 0) == mockViewModel.repos.count)
+    }
 }
 
 
 class MockRepositoriesViewModel: RepositoriesViewModelType {
     var items: PublishSubject<[Repository]> = PublishSubject<[Repository]>()
     var loadDataWasCalled = false
+    var repos = [Repository]()
 
     func loadData() {
         loadDataWasCalled = true
+
+        let repoOne = Repository(name: "Name 1", description: "Description 1", stars: 1)
+        let repoTwo = Repository(name: "Name 2", description: "Description 2", stars: 2)
+        repos = [repoOne, repoTwo]
+
+        items.onNext(repos)
     }
 }

@@ -44,6 +44,12 @@ class RepositoriesViewController: UIViewController {
 
     private func setUpTableView() {
         tableView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier)
+        viewModel.items
+            .bind(to: tableView.rx.items(cellIdentifier: cellIdentifier, cellType: RepositoryCell.self))
+            { (row,item,cell) in
+                cell.configure(item: item)
+            }
+        .disposed(by: bag)
     }
 
 }

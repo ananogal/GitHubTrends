@@ -21,4 +21,10 @@ class RepositoryCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
+
+    func configure(item: Repository) {
+        nameLabel.text = item.name
+        starsLabel.text = "\(item.stars) Stars"
+        descriptionLabel.text = item.description
+    }
 }
