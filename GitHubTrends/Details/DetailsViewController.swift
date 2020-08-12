@@ -28,6 +28,7 @@ class DetailsViewController: UIViewController {
         setUpUI()
         setUpBindings()
         viewModel.loadData()
+        viewModel.loadReadMe()
     }
 
     private func setUpUI() {
@@ -75,6 +76,12 @@ class DetailsViewController: UIViewController {
                 self.descriptionLabel.text = item.description
                 self.starsButton.setTitle("\(item.stars) Stars", for: .normal)
                 self.forksButton.setTitle("\(item.forks) Forks", for: .normal)
+            })
+        .disposed(by: bag)
+
+        viewModel.readMePublisher
+            .bind(onNext: { (text) in
+                self.readMeView.load(markdown: text)
             })
         .disposed(by: bag)
     }

@@ -10,6 +10,7 @@ import Alamofire
 
 protocol GatewayType {
     func loadRepositories(completion: @escaping ([Repository]) -> ())
+    func loadReadMe(readMeUrl: String, completion: @escaping (String) -> ())
 }
 
 class Gateway: GatewayType {
@@ -28,4 +29,11 @@ class Gateway: GatewayType {
         }
     }
 
+    func loadReadMe(readMeUrl: String, completion: @escaping (String) -> ()) {
+        AF.request(readMeUrl)
+            .responseString { (response) in
+                guard let text = response.value else { return }
+                completion(text)
+        }
+    }
 }

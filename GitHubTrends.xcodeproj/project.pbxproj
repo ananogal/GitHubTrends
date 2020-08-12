@@ -31,6 +31,7 @@
 		937A709C24E4576F00D879AB /* DetailsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937A709B24E4576F00D879AB /* DetailsViewControllerTests.swift */; };
 		937A709E24E458E900D879AB /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937A709D24E458E900D879AB /* DetailsViewModel.swift */; };
 		93EE146824E49AC5007B1646 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EE146724E49AC4007B1646 /* UIViewExtension.swift */; };
+		93EE146A24E4AC0B007B1646 /* DetailsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EE146924E4AC0B007B1646 /* DetailsViewModelTests.swift */; };
 		D5A569FEE532EB4934F8150B /* Pods_GitHubTrends.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5935C3C23BD820DEAD013397 /* Pods_GitHubTrends.framework */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +78,7 @@
 		937A709B24E4576F00D879AB /* DetailsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewControllerTests.swift; sourceTree = "<group>"; };
 		937A709D24E458E900D879AB /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
 		93EE146724E49AC4007B1646 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		93EE146924E4AC0B007B1646 /* DetailsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModelTests.swift; sourceTree = "<group>"; };
 		952AA3777C61B4EB73CCA93D /* Pods-GitHubTrends.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubTrends.release.xcconfig"; path = "Target Support Files/Pods-GitHubTrends/Pods-GitHubTrends.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -168,6 +170,7 @@
 				937A707A24E2E23800D879AB /* RepositoriesViewControllerTests.swift */,
 				937A708B24E305AB00D879AB /* RepositoriesViewModelTests.swift */,
 				937A709B24E4576F00D879AB /* DetailsViewControllerTests.swift */,
+				93EE146924E4AC0B007B1646 /* DetailsViewModelTests.swift */,
 			);
 			path = UnitTests;
 			sourceTree = "<group>";
@@ -460,6 +463,7 @@
 				937A709324E4322800D879AB /* MockRepositoriesViewModel.swift in Sources */,
 				937A709C24E4576F00D879AB /* DetailsViewControllerTests.swift in Sources */,
 				937A708C24E305AB00D879AB /* RepositoriesViewModelTests.swift in Sources */,
+				93EE146A24E4AC0B007B1646 /* DetailsViewModelTests.swift in Sources */,
 				937A709524E4327700D879AB /* MockGateway.swift in Sources */,
 				937A707B24E2E23800D879AB /* RepositoriesViewControllerTests.swift in Sources */,
 				937A6E7324E2A06000D879AB /* GitHubTrendsTests.swift in Sources */,

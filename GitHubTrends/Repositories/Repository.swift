@@ -12,4 +12,15 @@ struct Repository: Decodable {
     let avatar: String
     let author: String
     let forks: Int
+    let url: String
+}
+
+extension Repository {
+    var readmeUrl: String {
+        let readme = "/master/README.md"
+        let textToFind = "https://github.com"
+        let textToReplace = "https://raw.githubusercontent.com"
+        let newUrl = url.replacingOccurrences(of: textToFind, with: textToReplace)
+        return "\(newUrl)\(readme)"
+    }
 }

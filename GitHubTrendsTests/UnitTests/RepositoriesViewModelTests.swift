@@ -23,6 +23,7 @@ class RepositoriesViewModelTests: XCTestCase {
 
     override func tearDownWithError() throws {
         viewModel = nil
+        gateway = nil
     }
 
     func test_whenLoadingData_itCallsGetway() {

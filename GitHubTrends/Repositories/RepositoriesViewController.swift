@@ -69,11 +69,11 @@ class RepositoriesViewController: UIViewController {
 
     func showDetails(_ item: Repository) {
         let vc = UIStoryboard.detailsViewController()
-        let detailsViewModel = DetailsViewModel(item: item)
+        let gateway = Gateway()
+        let detailsViewModel = DetailsViewModel(item: item, gateway: gateway)
         vc.viewModel = detailsViewModel
         navigationController?.pushViewController(vc, animated: true)
     }
-
 }
 
 extension RepositoriesViewController: UISearchResultsUpdating {

@@ -14,13 +14,15 @@ import RxTest
 
 class DetailsViewControllerTests: XCTestCase {
     var detailsVC: DetailsViewController!
-    var viewModel: DetailsViewModelType!
+    var viewModel: MockDetailsViewModel!
     var item: Repository!
+    var gateway: MockGateway!
 
     override func setUpWithError() throws {
         detailsVC = UIStoryboard.detailsViewController()
-        item = Repository(name: "name", description: "description", stars: 1, avatar: "", author: "author", forks: 1)
-        viewModel = DetailsViewModel(item: item)
+        gateway = MockGateway()
+        item = Repository(name: "name", description: "description", stars: 1, avatar: "", author: "author", forks: 1, url: "")
+        viewModel = MockDetailsViewModel(item: item, gateway: gateway)
         detailsVC.viewModel = viewModel
     }
 
@@ -64,8 +66,8 @@ class DetailsViewControllerTests: XCTestCase {
     }
 
     func test_whenLoadingImage_setsTheAvatarImageUrl() {
-        let item = Repository(name: "name", description: "description", stars: 1, avatar: "https://github.com/ananogal.png", author: "author", forks: 1)
-        viewModel = DetailsViewModel(item: item)
+        let item = Repository(name: "name", description: "description", stars: 1, avatar: "https://github.com/ananogal.png", author: "author", forks: 1, url: "")
+        viewModel = MockDetailsViewModel(item: item, gateway: MockGateway())
         detailsVC.viewModel = viewModel
         detailsVC.loadViewIfNeeded()
 
@@ -94,5 +96,37 @@ class DetailsViewControllerTests: XCTestCase {
         detailsVC.loadViewIfNeeded()
 
         XCTAssertEqual(detailsVC.forksButton.title(for: .normal), "\(item.forks) Forks")
+    }
+
+    func test_whenLoading_loadsReameFile() {
+        detailsVC.loadViewIfNeeded()
+
+        XCTAssertTrue(viewModel.loadReadMeWasCalled)
+    }
+}
+
+class MockDetailsViewModel: DetailsViewModelType {
+    var item: Repository
+
+    var itemPublisher = PublishSubject<Repository>()
+    var readMePublisher = PublishSubject<String>()
+    var gateway: MockGateway
+    var avatarURL: URL? {
+        return URL(string: "https://github.com/ananogal.png")
+    }
+
+    var loadReadMeWasCalled = false
+
+    init(item: Repository, gateway: MockGateway) {
+        self.item = item
+        self.gateway = gateway
+    }
+
+    func loadData() {
+        itemPublisher.onNext(item)
+    }
+
+    func loadReadMe() {
+        loadReadMeWasCalled = true
     }
 }

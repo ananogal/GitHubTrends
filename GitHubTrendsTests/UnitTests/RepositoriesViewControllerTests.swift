@@ -116,7 +116,7 @@ class RepositoriesViewControllerTests: XCTestCase {
         let mockNavigationViewController = MockNavigationController(rootViewController: reposViewController)
         reposViewController.loadViewIfNeeded()
 
-        let item = Repository(name: "Name", description: "Description", stars: 1, avatar: "", author: "author", forks: 1)
+        let item = Repository(name: "Name", description: "Description", stars: 1, avatar: "", author: "author", forks: 1, url: "")
         reposViewController.showDetails(item)
 
         XCTAssertNotNil(mockNavigationViewController.pushedViewController as? DetailsViewController)
