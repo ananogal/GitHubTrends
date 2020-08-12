@@ -20,6 +20,10 @@ class GitHubTrendsTests: XCTestCase {
 //Then I see a list of trending repositories with project name, stars and description
 //And I can filter then by name
 
+    override func setUpWithError() throws {
+         continueAfterFailure = false
+    }
+
     func test_whenIStartTheApp_thenIWillSeeAListOfTrendingRepositories() {
         let repositoriesVC = UIStoryboard.repositoriesViewController()
 
@@ -36,9 +40,13 @@ class GitHubTrendsTests: XCTestCase {
 
         repositoriesVC.loadViewIfNeeded()
 
-        XCTAssertEqual(itemsObserver.events.count, 1)
+        if itemsObserver.events.isEmpty {
+            XCTFail("No Data to Display")
+        }
+
+        let cell = repositoriesVC.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! RepositoryCell
+        XCTAssertTrue(!cell.descriptionLabel.text!.isEmpty)
+        XCTAssertTrue(!cell.nameLabel.text!.isEmpty)
+        XCTAssertTrue(!cell.starsLabel.text!.isEmpty)
     }
-
 }
-
-

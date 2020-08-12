@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class RepositoriesViewController: UIViewController {
     @IBOutlet var tableView: UITableView!
     var viewModel: RepositoriesViewModelType!
     private let cellIdentifier = "RepositoryCell"
+    private let bag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +25,7 @@ class RepositoriesViewController: UIViewController {
         setTitle()
         setUpSearchController()
         setUpTableView()
+        viewModel.loadData()
     }
 
     private func setTitle() {

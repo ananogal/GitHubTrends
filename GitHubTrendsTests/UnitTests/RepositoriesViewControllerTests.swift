@@ -64,9 +64,20 @@ class RepositoriesViewControllerTests: XCTestCase {
 
         XCTAssertNotNil(reposViewController.tableView.dequeueReusableCell(withIdentifier: "RepositoryCell"))
     }
+
+    func test_whenloadingIsDone_loadsData() {
+        reposViewController.loadViewIfNeeded()
+
+        XCTAssertTrue(mockViewModel.loadDataWasCalled)
+    }
 }
 
 
 class MockRepositoriesViewModel: RepositoriesViewModelType {
     var items: PublishSubject<[Repository]> = PublishSubject<[Repository]>()
+    var loadDataWasCalled = false
+
+    func loadData() {
+        loadDataWasCalled = true
+    }
 }

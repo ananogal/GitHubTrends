@@ -11,10 +11,15 @@ import RxSwift
 
 protocol RepositoriesViewModelType {
     var items: PublishSubject<[Repository]> { get }
+    func loadData()
 }
 
 class RepositoriesViewModel: RepositoriesViewModelType {
     var items: PublishSubject<[Repository]> = PublishSubject<[Repository]>()
+
+    func loadData() {
+        
+    }
 }
 
 struct Repository{}
