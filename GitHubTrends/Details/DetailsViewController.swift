@@ -18,8 +18,18 @@ class DetailsViewController: UIViewController {
     @IBOutlet var starsButton: UIButton!
     @IBOutlet var forksButton: UIButton!
 
+    var viewModel: DetailsViewModel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpUI()
     }
 
+    private func setUpUI() {
+        title = viewModel.title
+        let backButton = UIBarButtonItem()
+        backButton.title = "Back"
+        backButton.tintColor = UIColor.tintColor
+        navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+    }
 }

@@ -69,30 +69,34 @@ class GitHubTrendsTests: XCTestCase {
     //I want to see the details of that repository including: the author avatar and name;
     //the repository description, stars and forks; the repository readme.
     func test_whenSelectingOneRepository_iCanSeeTheDetailsOfThatRepo() throws {
-        createRepositoriesControllerWithNavigation(gateway: Gateway())
+        let navigationController = createRepositoriesControllerWithNavigation(gateway: Gateway())
         startScheduler()
         repositoriesVC.loadViewIfNeeded()
 
         try receiveEvent()
 
-        repositoriesVC.tableView.selectRow(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: .none)
+        let item = Repository(name: "Name", description: "Description", stars: 1)
+        repositoriesVC.showDetails(item)
 
-        XCTAssertNotNil(repositoriesVC.navigationController?.topViewController as? DetailsViewController)
+        XCTAssertNotNil(navigationController.pushedViewController as? DetailsViewController)
 
-        let detailsVC = repositoriesVC.navigationController?.topViewController as! DetailsViewController
+        let detailsVC = navigationController.pushedViewController as! DetailsViewController
+        detailsVC.loadViewIfNeeded()
 
         XCTAssertNotNil(detailsVC.avatarImageView.image)
         XCTAssertFalse(detailsVC.nameLabel.text!.isEmpty)
         XCTAssertFalse(detailsVC.descriptionLabel.text!.isEmpty)
+        XCTAssertNotNil(detailsVC.starsButton.title(for: .normal))
         XCTAssertFalse(detailsVC.starsButton.title(for: .normal)!.isEmpty)
+        XCTAssertNotNil(detailsVC.forksButton.title(for: .normal))
         XCTAssertFalse(detailsVC.forksButton.title(for: .normal)!.isEmpty)
     }
 
     //MARK - Test helpers
 
-    private func createRepositoriesControllerWithNavigation(gateway: GatewayType) {
+    private func createRepositoriesControllerWithNavigation(gateway: GatewayType) -> MockNavigationController {
         createRepositoriesController(gateway: gateway)
-        let _ = UINavigationController(rootViewController: repositoriesVC)
+        return MockNavigationController(rootViewController: repositoriesVC)
     }
 
     private func createRepositoriesController(gateway: GatewayType) {

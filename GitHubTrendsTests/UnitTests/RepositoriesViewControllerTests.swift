@@ -8,6 +8,7 @@
 
 import XCTest
 import RxSwift
+import RxTest
 
 @testable import GitHubTrends
 
@@ -110,4 +111,15 @@ class RepositoriesViewControllerTests: XCTestCase {
 
         XCTAssertEqual(reposViewController.tableView.numberOfRows(inSection: 0), allItemsCount)
     }
+
+    func test_whenSelectingRepository_itPushesDetailsViewControllerToNavigationController() throws {
+        let mockNavigationViewController = MockNavigationController(rootViewController: reposViewController)
+        reposViewController.loadViewIfNeeded()
+
+        let item = Repository(name: "Name", description: "Description", stars: 1)
+        reposViewController.showDetails(item)
+
+        XCTAssertNotNil(mockNavigationViewController.pushedViewController as? DetailsViewController)
+    }
 }
+

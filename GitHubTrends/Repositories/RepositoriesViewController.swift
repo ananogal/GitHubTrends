@@ -57,10 +57,21 @@ class RepositoriesViewController: UIViewController {
                 cell.configure(item: item)
             }
         .disposed(by: bag)
+
+        tableView.rx.modelSelected(Repository.self).subscribe(onNext: { [weak self] item in
+            self?.showDetails(item)
+        }).disposed(by: bag)
     }
 
     func resetSearch() {
         viewModel.resetSearch()
+    }
+
+    func showDetails(_ item: Repository) {
+        let vc = UIStoryboard.detailsViewController()
+        let detailsViewModel = DetailsViewModel(item: item)
+        vc.viewModel = detailsViewModel
+        navigationController?.pushViewController(vc, animated: true)
     }
 
 }
