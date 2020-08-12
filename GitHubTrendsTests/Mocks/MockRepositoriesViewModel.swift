@@ -30,13 +30,13 @@ class MockRepositoriesViewModel: RepositoriesViewModelType {
     }
 
     func createReposData() {
-        let repoOne = Repository(name: "Name 1", description: "Description 1", stars: 1)
-        let repoTwo = Repository(name: "Name 2", description: "Description 2", stars: 2)
+        let repoOne = Repository(name: "Name 1", description: "Description 1", stars: 1, avatar: "")
+        let repoTwo = Repository(name: "Name 2", description: "Description 2", stars: 2, avatar: "")
         repos = [repoOne, repoTwo]
     }
 
     func createSearchedReposData() {
-        let repoOne = Repository(name: "Name 1", description: "Description 1", stars: 1)
+        let repoOne = Repository(name: "Name 1", description: "Description 1", stars: 1, avatar: "")
         repos = [repoOne]
     }
 

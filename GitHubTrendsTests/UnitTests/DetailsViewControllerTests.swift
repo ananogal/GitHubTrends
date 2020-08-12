@@ -14,12 +14,12 @@ import RxTest
 
 class DetailsViewControllerTests: XCTestCase {
     var detailsVC: DetailsViewController!
-    var viewModel: DetailsViewModel!
+    var viewModel: DetailsViewModelType!
 
     override func setUpWithError() throws {
         detailsVC = UIStoryboard.detailsViewController()
-        let item = Repository(name: "name", description: "description", stars: 1)
-        viewModel = DetailsViewModel(item: item)
+        let item = Repository(name: "name", description: "description", stars: 1, avatar: "")
+        viewModel = MockDetailsViewModel(item: item)
         detailsVC.viewModel = viewModel
     }
 
@@ -44,9 +44,39 @@ class DetailsViewControllerTests: XCTestCase {
 
         XCTAssertEqual(detailsVC.navigationController?.navigationBar.topItem?.backBarButtonItem?.tintColor, UIColor.tintColor)
     }
+
+    func test_whenLoading_setsBorderStyleToStarForksContainer() {
+        detailsVC.loadViewIfNeeded()
+
+        XCTAssertEqual(detailsVC.starForksContainer.layer.borderWidth, 0.5)
+        XCTAssertEqual(detailsVC.starForksContainer.layer.borderColor, UIColor.lightGray.cgColor)
+        XCTAssertEqual(detailsVC.starForksContainer.layer.cornerRadius, 10)
+    }
+
+    func test_whenLoadingImage_setsTheAvatarImageToPlaceHolderForInvalidUrl() {
+        detailsVC.loadViewIfNeeded()
+
+        let image = UIImage(systemName: "person.fill")
+        image?.withTintColor(.lightGray)
+
+        XCTAssertEqual(detailsVC.avatarImageView.image, image)
+    }
+
+    func test_whenLoadingImage_setsTheAvatarImageUrl() {
+        let item = Repository(name: "name", description: "description", stars: 1, avatar: "https://github.com/ananogal.png")
+        viewModel = MockDetailsViewModel(item: item)
+        detailsVC.viewModel = viewModel
+        detailsVC.loadViewIfNeeded()
+
+        XCTAssertNotNil(detailsVC.avatarImageView.image)
+    }
 }
 
 class MockDetailsViewModel: DetailsViewModelType {
+    var avatarURL: URL? {
+        return URL(string: item.avatar)
+    }
+
     private let item: Repository
 
     init(item:Repository) {

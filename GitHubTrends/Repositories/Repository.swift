@@ -9,4 +9,5 @@ struct Repository: Decodable {
     let name: String
     let description: String
     let stars: Int
+    let avatar: String
 }

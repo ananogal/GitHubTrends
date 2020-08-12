@@ -54,8 +54,8 @@ class GitHubTrendsTests: XCTestCase {
         repositoriesVC.loadViewIfNeeded()
 
         let numberOfSearchedItems = 1
-        let repoOne = Repository(name: "Name 1", description: "Description 1", stars: 1)
-        let repoTwo = Repository(name: "Name 2", description: "Description 2", stars: 2)
+        let repoOne = Repository(name: "Name 1", description: "Description 1", stars: 1, avatar: "")
+        let repoTwo = Repository(name: "Name 2", description: "Description 2", stars: 2, avatar: "")
         mockGateway.repos = [repoOne, repoTwo]
 
         let textToSearch = "1"
@@ -75,7 +75,7 @@ class GitHubTrendsTests: XCTestCase {
 
         try receiveEvent()
 
-        let item = Repository(name: "Name", description: "Description", stars: 1)
+        let item = Repository(name: "Name", description: "Description", stars: 1, avatar: "")
         repositoriesVC.showDetails(item)
 
         XCTAssertNotNil(navigationController.pushedViewController as? DetailsViewController)

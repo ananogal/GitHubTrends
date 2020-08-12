@@ -10,6 +10,7 @@ import Foundation
 
 protocol DetailsViewModelType {
     var title: String { get }
+    var avatarURL: URL? { get }
 }
 
 class DetailsViewModel: DetailsViewModelType {
@@ -21,5 +22,9 @@ class DetailsViewModel: DetailsViewModelType {
 
     var title: String {
         return item.name
+    }
+
+    var avatarURL: URL? {
+        return URL(string: item.avatar)
     }
 }

@@ -30,6 +30,7 @@
 		937A709A24E4557E00D879AB /* MockNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937A709924E4557E00D879AB /* MockNavigationController.swift */; };
 		937A709C24E4576F00D879AB /* DetailsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937A709B24E4576F00D879AB /* DetailsViewControllerTests.swift */; };
 		937A709E24E458E900D879AB /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937A709D24E458E900D879AB /* DetailsViewModel.swift */; };
+		93EE146824E49AC5007B1646 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EE146724E49AC4007B1646 /* UIViewExtension.swift */; };
 		D5A569FEE532EB4934F8150B /* Pods_GitHubTrends.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5935C3C23BD820DEAD013397 /* Pods_GitHubTrends.framework */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +76,7 @@
 		937A709924E4557E00D879AB /* MockNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNavigationController.swift; sourceTree = "<group>"; };
 		937A709B24E4576F00D879AB /* DetailsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewControllerTests.swift; sourceTree = "<group>"; };
 		937A709D24E458E900D879AB /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
+		93EE146724E49AC4007B1646 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		952AA3777C61B4EB73CCA93D /* Pods-GitHubTrends.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubTrends.release.xcconfig"; path = "Target Support Files/Pods-GitHubTrends/Pods-GitHubTrends.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -186,6 +188,7 @@
 			children = (
 				937A707E24E2F4FA00D879AB /* UIColorExtension.swift */,
 				937A708224E2FBDB00D879AB /* UIStoryboardExtension.swift */,
+				93EE146724E49AC4007B1646 /* UIViewExtension.swift */,
 			);
 			path = UIExtensions;
 			sourceTree = "<group>";
@@ -441,6 +444,7 @@
 				937A6E6024E2A05C00D879AB /* RepositoriesViewController.swift in Sources */,
 				937A707F24E2F4FA00D879AB /* UIColorExtension.swift in Sources */,
 				937A6E5C24E2A05C00D879AB /* AppDelegate.swift in Sources */,
+				93EE146824E49AC5007B1646 /* UIViewExtension.swift in Sources */,
 				937A708324E2FBDB00D879AB /* UIStoryboardExtension.swift in Sources */,
 				937A709E24E458E900D879AB /* DetailsViewModel.swift in Sources */,
 				937A6E5E24E2A05C00D879AB /* SceneDelegate.swift in Sources */,

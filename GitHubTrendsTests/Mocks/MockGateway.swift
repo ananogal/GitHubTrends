@@ -14,10 +14,10 @@ class MockGateway: GatewayType {
     func loadRepositories(completion: ([Repository]) -> ()) {
         loadRepositoriesWasCalled = true
 
-        let repoOne = Repository(name: "Name 1", description: "Description 1", stars: 1)
-        let repoTwo = Repository(name: "Name 2", description: "Description 2", stars: 2)
-        let repoThree = Repository(name: "Name 3", description: "Description 3", stars: 3)
-        let repoFour = Repository(name: "Name 4", description: "Description 4", stars: 4)
+        let repoOne = Repository(name: "Name 1", description: "Description 1", stars: 1, avatar: "")
+        let repoTwo = Repository(name: "Name 2", description: "Description 2", stars: 2, avatar: "")
+        let repoThree = Repository(name: "Name 3", description: "Description 3", stars: 3, avatar: "")
+        let repoFour = Repository(name: "Name 4", description: "Description 4", stars: 4, avatar: "")
         repos = [repoOne, repoTwo, repoThree, repoFour]
         completion(repos)
     }
