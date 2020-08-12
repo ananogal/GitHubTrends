@@ -15,8 +15,11 @@ extension UIStoryboard {
 
     static func repositoriesViewController() -> RepositoriesViewController {
         let storyBoard = UIStoryboard.main()
-        let viewController = storyBoard.instantiateViewController(withIdentifier: "RepositoriesViewController") as! RepositoriesViewController
+        return storyBoard.instantiateViewController(withIdentifier: "RepositoriesViewController") as! RepositoriesViewController
+    }
 
-        return viewController
+    static func detailsViewController() -> DetailsViewController {
+        let storyBoard = UIStoryboard.main()
+        return storyBoard.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
     }
 }

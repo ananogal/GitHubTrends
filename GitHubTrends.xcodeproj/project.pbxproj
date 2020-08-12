@@ -26,6 +26,7 @@
 		937A709024E4028400D879AB /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937A708F24E4028400D879AB /* Repository.swift */; };
 		937A709324E4322800D879AB /* MockRepositoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937A709224E4322800D879AB /* MockRepositoriesViewModel.swift */; };
 		937A709524E4327700D879AB /* MockGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937A709424E4327700D879AB /* MockGateway.swift */; };
+		937A709824E4428C00D879AB /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937A709724E4428C00D879AB /* DetailsViewController.swift */; };
 		D5A569FEE532EB4934F8150B /* Pods_GitHubTrends.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5935C3C23BD820DEAD013397 /* Pods_GitHubTrends.framework */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +68,7 @@
 		937A708F24E4028400D879AB /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Repository.swift; path = "/Users/ananogal/Documents/XepoiOSChallenge /GitHubTrends/GitHubTrends/Repositories/Repository.swift"; sourceTree = "<absolute>"; };
 		937A709224E4322800D879AB /* MockRepositoriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockRepositoriesViewModel.swift; sourceTree = "<group>"; };
 		937A709424E4327700D879AB /* MockGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGateway.swift; sourceTree = "<group>"; };
+		937A709724E4428C00D879AB /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		952AA3777C61B4EB73CCA93D /* Pods-GitHubTrends.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubTrends.release.xcconfig"; path = "Target Support Files/Pods-GitHubTrends/Pods-GitHubTrends.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -122,6 +124,7 @@
 		937A6E5A24E2A05C00D879AB /* GitHubTrends */ = {
 			isa = PBXGroup;
 			children = (
+				937A709624E4424F00D879AB /* Details */,
 				937A708424E2FF2600D879AB /* AppDelegate */,
 				937A707D24E2F4DF00D879AB /* UIExtensions */,
 				937A707C24E2E3B900D879AB /* Repositories */,
@@ -215,6 +218,14 @@
 				937A709424E4327700D879AB /* MockGateway.swift */,
 			);
 			path = Mocks;
+			sourceTree = "<group>";
+		};
+		937A709624E4424F00D879AB /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				937A709724E4428C00D879AB /* DetailsViewController.swift */,
+			);
+			path = Details;
 			sourceTree = "<group>";
 		};
 		BCEDE107E6FD32D8E3FD5185 /* Pods */ = {
@@ -424,6 +435,7 @@
 				937A708324E2FBDB00D879AB /* UIStoryboardExtension.swift in Sources */,
 				937A6E5E24E2A05C00D879AB /* SceneDelegate.swift in Sources */,
 				937A709024E4028400D879AB /* Repository.swift in Sources */,
+				937A709824E4428C00D879AB /* DetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
