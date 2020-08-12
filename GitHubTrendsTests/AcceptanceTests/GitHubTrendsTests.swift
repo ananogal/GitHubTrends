@@ -54,8 +54,8 @@ class GitHubTrendsTests: XCTestCase {
         repositoriesVC.loadViewIfNeeded()
 
         let numberOfSearchedItems = 1
-        let repoOne = Repository(name: "Name 1", description: "Description 1", stars: 1, avatar: "", author: "author")
-        let repoTwo = Repository(name: "Name 2", description: "Description 2", stars: 2, avatar: "", author: "author")
+        let repoOne = Repository(name: "Name 1", description: "Description 1", stars: 1, avatar: "", author: "author", forks: 1)
+        let repoTwo = Repository(name: "Name 2", description: "Description 2", stars: 2, avatar: "", author: "author", forks: 1)
         mockGateway.repos = [repoOne, repoTwo]
 
         let textToSearch = "1"
@@ -75,7 +75,7 @@ class GitHubTrendsTests: XCTestCase {
 
         try receiveEvent()
 
-        let item = Repository(name: "Name", description: "Description", stars: 1, avatar: "", author: "author")
+        let item = Repository(name: "Name", description: "Description", stars: 1, avatar: "", author: "author", forks: 1)
         repositoriesVC.showDetails(item)
 
         XCTAssertNotNil(navigationController.pushedViewController as? DetailsViewController)
@@ -89,7 +89,6 @@ class GitHubTrendsTests: XCTestCase {
         XCTAssertNotNil(detailsVC.starsButton.title(for: .normal))
         XCTAssertFalse(detailsVC.starsButton.title(for: .normal)!.isEmpty)
         XCTAssertNotNil(detailsVC.forksButton.title(for: .normal))
-        XCTAssertFalse(detailsVC.forksButton.title(for: .normal)!.isEmpty)
     }
 
     //MARK - Test helpers

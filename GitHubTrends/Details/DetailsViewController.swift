@@ -74,6 +74,7 @@ class DetailsViewController: UIViewController {
                 self.nameLabel.text = item.author
                 self.descriptionLabel.text = item.description
                 self.starsButton.setTitle("\(item.stars) Stars", for: .normal)
+                self.forksButton.setTitle("\(item.forks) Forks", for: .normal)
             })
         .disposed(by: bag)
     }

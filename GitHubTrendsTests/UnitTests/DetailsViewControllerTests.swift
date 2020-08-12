@@ -19,7 +19,7 @@ class DetailsViewControllerTests: XCTestCase {
 
     override func setUpWithError() throws {
         detailsVC = UIStoryboard.detailsViewController()
-        item = Repository(name: "name", description: "description", stars: 1, avatar: "", author: "author")
+        item = Repository(name: "name", description: "description", stars: 1, avatar: "", author: "author", forks: 1)
         viewModel = DetailsViewModel(item: item)
         detailsVC.viewModel = viewModel
     }
@@ -64,7 +64,7 @@ class DetailsViewControllerTests: XCTestCase {
     }
 
     func test_whenLoadingImage_setsTheAvatarImageUrl() {
-        let item = Repository(name: "name", description: "description", stars: 1, avatar: "https://github.com/ananogal.png", author: "author")
+        let item = Repository(name: "name", description: "description", stars: 1, avatar: "https://github.com/ananogal.png", author: "author", forks: 1)
         viewModel = DetailsViewModel(item: item)
         detailsVC.viewModel = viewModel
         detailsVC.loadViewIfNeeded()
@@ -88,5 +88,11 @@ class DetailsViewControllerTests: XCTestCase {
         detailsVC.loadViewIfNeeded()
 
         XCTAssertEqual(detailsVC.starsButton.title(for: .normal), "\(item.stars) Stars")
+    }
+
+    func test_whenLoading_setsTitleOfForksButoonToNumberOfStars() {
+        detailsVC.loadViewIfNeeded()
+
+        XCTAssertEqual(detailsVC.forksButton.title(for: .normal), "\(item.forks) Forks")
     }
 }
