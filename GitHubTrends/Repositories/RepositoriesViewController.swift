@@ -40,6 +40,13 @@ class RepositoriesViewController: UIViewController {
         search.obscuresBackgroundDuringPresentation = false
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.searchController = search
+
+        navigationItem.searchController?
+            .searchBar.rx.cancelButtonClicked
+            .subscribe(onNext: { [weak self]  in
+                self?.resetSearch()
+            })
+        .disposed(by: bag)
     }
 
     private func setUpTableView() {
@@ -50,6 +57,10 @@ class RepositoriesViewController: UIViewController {
                 cell.configure(item: item)
             }
         .disposed(by: bag)
+    }
+
+    func resetSearch() {
+        viewModel.resetSearch()
     }
 
 }

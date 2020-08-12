@@ -13,6 +13,7 @@ protocol RepositoriesViewModelType {
     var items: PublishSubject<[Repository]> { get }
     func loadData()
     func searchRepositories(textToSearch: String)
+    func resetSearch()
 }
 
 class RepositoriesViewModel: RepositoriesViewModelType {
@@ -39,5 +40,9 @@ class RepositoriesViewModel: RepositoriesViewModelType {
         }
 
         items.onNext(fitered)
+    }
+
+    func resetSearch() {
+        items.onNext(originalItems)
     }
 }

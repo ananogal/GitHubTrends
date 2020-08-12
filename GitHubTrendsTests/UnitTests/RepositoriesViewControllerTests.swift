@@ -90,17 +90,24 @@ class RepositoriesViewControllerTests: XCTestCase {
     func test_whenSearchForAText_itSetsTableViewWithResults() {
         let _ = UINavigationController(rootViewController: reposViewController)
         reposViewController.loadViewIfNeeded()
+        let allItemsCount = mockViewModel.repos.count
 
         reposViewController.navigationItem.searchController?.searchBar.text = "1"
+        let filteredItemsCount = mockViewModel.repos.count
 
-        XCTAssertEqual(reposViewController.tableView.numberOfRows(inSection: 0), mockViewModel.repos.count)
+        XCTAssertTrue(allItemsCount > filteredItemsCount)
+        XCTAssertEqual(reposViewController.tableView.numberOfRows(inSection: 0), filteredItemsCount)
     }
 
     func test_whenSearchingAndCancelButtonIsTapped_IWantToSeeAllItems() {
         let _ = UINavigationController(rootViewController: reposViewController)
         reposViewController.loadViewIfNeeded()
+        let allItemsCount = mockViewModel.repos.count
 
         reposViewController.navigationItem.searchController?.searchBar.text = "1"
-        reposViewController.navigationItem.searchController?.
+
+        reposViewController.resetSearch()
+
+        XCTAssertEqual(reposViewController.tableView.numberOfRows(inSection: 0), allItemsCount)
     }
 }

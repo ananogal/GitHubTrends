@@ -14,10 +14,12 @@ class MockRepositoriesViewModel: RepositoriesViewModelType {
     var loadDataWasCalled = false
     var searchRepositoriesWasCalled = false
     var repos = [Repository]()
+    var loadedRepos = [Repository]()
 
     func loadData() {
         loadDataWasCalled = true
         createReposData()
+        loadedRepos = repos
         items.onNext(repos)
     }
 
@@ -36,5 +38,9 @@ class MockRepositoriesViewModel: RepositoriesViewModelType {
     func createSearchedReposData() {
         let repoOne = Repository(name: "Name 1", description: "Description 1", stars: 1)
         repos = [repoOne]
+    }
+
+    func resetSearch() {
+        items.onNext(loadedRepos)
     }
 }
