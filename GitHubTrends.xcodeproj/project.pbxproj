@@ -24,6 +24,8 @@
 		937A708C24E305AB00D879AB /* RepositoriesViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937A708B24E305AB00D879AB /* RepositoriesViewModelTests.swift */; };
 		937A708E24E4025B00D879AB /* Gateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937A708D24E4025B00D879AB /* Gateway.swift */; };
 		937A709024E4028400D879AB /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937A708F24E4028400D879AB /* Repository.swift */; };
+		937A709324E4322800D879AB /* MockRepositoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937A709224E4322800D879AB /* MockRepositoriesViewModel.swift */; };
+		937A709524E4327700D879AB /* MockGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937A709424E4327700D879AB /* MockGateway.swift */; };
 		D5A569FEE532EB4934F8150B /* Pods_GitHubTrends.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5935C3C23BD820DEAD013397 /* Pods_GitHubTrends.framework */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +65,8 @@
 		937A708B24E305AB00D879AB /* RepositoriesViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesViewModelTests.swift; sourceTree = "<group>"; };
 		937A708D24E4025B00D879AB /* Gateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gateway.swift; sourceTree = "<group>"; };
 		937A708F24E4028400D879AB /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Repository.swift; path = "/Users/ananogal/Documents/XepoiOSChallenge /GitHubTrends/GitHubTrends/Repositories/Repository.swift"; sourceTree = "<absolute>"; };
+		937A709224E4322800D879AB /* MockRepositoriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockRepositoriesViewModel.swift; sourceTree = "<group>"; };
+		937A709424E4327700D879AB /* MockGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGateway.swift; sourceTree = "<group>"; };
 		952AA3777C61B4EB73CCA93D /* Pods-GitHubTrends.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubTrends.release.xcconfig"; path = "Target Support Files/Pods-GitHubTrends/Pods-GitHubTrends.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -131,6 +135,7 @@
 		937A6E7124E2A05F00D879AB /* GitHubTrendsTests */ = {
 			isa = PBXGroup;
 			children = (
+				937A709124E4320F00D879AB /* Mocks */,
 				937A707824E2E16700D879AB /* AcceptanceTests */,
 				937A707924E2E17400D879AB /* UnitTests */,
 				937A6E7424E2A06000D879AB /* Info.plist */,
@@ -201,6 +206,15 @@
 				937A708724E2FF8500D879AB /* RepositoryCell.xib */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		937A709124E4320F00D879AB /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				937A709224E4322800D879AB /* MockRepositoriesViewModel.swift */,
+				937A709424E4327700D879AB /* MockGateway.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 		BCEDE107E6FD32D8E3FD5185 /* Pods */ = {
@@ -417,7 +431,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				937A709324E4322800D879AB /* MockRepositoriesViewModel.swift in Sources */,
 				937A708C24E305AB00D879AB /* RepositoriesViewModelTests.swift in Sources */,
+				937A709524E4327700D879AB /* MockGateway.swift in Sources */,
 				937A707B24E2E23800D879AB /* RepositoriesViewControllerTests.swift in Sources */,
 				937A6E7324E2A06000D879AB /* GitHubTrendsTests.swift in Sources */,
 			);

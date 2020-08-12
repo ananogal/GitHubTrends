@@ -56,6 +56,9 @@ class RepositoriesViewController: UIViewController {
 
 extension RepositoriesViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        
+        guard let textToSearch = searchController.searchBar.text else {
+            return
+        }
+        viewModel.searchRepositories(textToSearch: textToSearch)
     }
 }

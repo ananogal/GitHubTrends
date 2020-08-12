@@ -12,9 +12,11 @@ import RxSwift
 protocol RepositoriesViewModelType {
     var items: PublishSubject<[Repository]> { get }
     func loadData()
+    func searchRepositories(textToSearch: String)
 }
 
 class RepositoriesViewModel: RepositoriesViewModelType {
+    private var originalItems = [Repository]()
     var items: PublishSubject<[Repository]> = PublishSubject<[Repository]>()
 
     private let gateway: GatewayType
@@ -24,8 +26,18 @@ class RepositoriesViewModel: RepositoriesViewModelType {
     }
 
     func loadData() {
-        gateway.loadRepositories { [weak self](repositories) in
+        gateway.loadRepositories { [weak self] (repositories) in
+            self?.originalItems = repositories
             self?.items.onNext(repositories)
         }
+    }
+
+    func searchRepositories(textToSearch: String) {
+        guard !textToSearch.isEmpty else { return }
+        let fitered = originalItems.filter { item in
+            return item.name.lowercased().contains(textToSearch.lowercased())
+        }
+
+        items.onNext(fitered)
     }
 }

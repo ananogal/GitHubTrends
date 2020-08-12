@@ -78,22 +78,29 @@ class RepositoriesViewControllerTests: XCTestCase {
         XCTAssertTrue(reposViewController.tableView.numberOfRows(inSection: 0) == mockViewModel.repos.count)
     }
 
+    func test_whenSearchForAText_itSearchesForTheItems() {
+        let _ = UINavigationController(rootViewController: reposViewController)
+        reposViewController.loadViewIfNeeded()
 
-}
+        reposViewController.navigationItem.searchController?.searchBar.text = ""
 
+        XCTAssertTrue(mockViewModel.searchRepositoriesWasCalled)
+    }
 
-class MockRepositoriesViewModel: RepositoriesViewModelType {
-    var items: PublishSubject<[Repository]> = PublishSubject<[Repository]>()
-    var loadDataWasCalled = false
-    var repos = [Repository]()
+    func test_whenSearchForAText_itSetsTableViewWithResults() {
+        let _ = UINavigationController(rootViewController: reposViewController)
+        reposViewController.loadViewIfNeeded()
 
-    func loadData() {
-        loadDataWasCalled = true
+        reposViewController.navigationItem.searchController?.searchBar.text = "1"
 
-        let repoOne = Repository(name: "Name 1", description: "Description 1", stars: 1)
-        let repoTwo = Repository(name: "Name 2", description: "Description 2", stars: 2)
-        repos = [repoOne, repoTwo]
+        XCTAssertEqual(reposViewController.tableView.numberOfRows(inSection: 0), mockViewModel.repos.count)
+    }
 
-        items.onNext(repos)
+    func test_whenSearchingAndCancelButtonIsTapped_IWantToSeeAllItems() {
+        let _ = UINavigationController(rootViewController: reposViewController)
+        reposViewController.loadViewIfNeeded()
+
+        reposViewController.navigationItem.searchController?.searchBar.text = "1"
+        reposViewController.navigationItem.searchController?.
     }
 }
