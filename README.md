@@ -5,7 +5,7 @@ List of the daily trending repositories on GitHub
 The app list the daily trending repositories on GitHub and allows you to see the readme.md when you select one. 
 
 ### Check it out!
-(insert here video of the app working)
+![](https://github.com/ananogal/GitHubTrends/blob/master/GitHubTrends.gif)
 
 ### How To Get Started
 Clone GitHubTrends from GitHub.
