@@ -24,6 +24,7 @@ class DetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
+        setUpBindings()
     }
 
     private func setUpUI() {
@@ -62,5 +63,9 @@ class DetailsViewController: UIViewController {
 
         let transition = UIImageView.ImageTransition.crossDissolve(0.3)
         avatarImageView.af.setImage(withURL: url, placeholderImage: placeholderImage, imageTransition: transition)
+    }
+
+    private func setUpBindings() {
+        nameLabel.text = viewModel.author
     }
 }

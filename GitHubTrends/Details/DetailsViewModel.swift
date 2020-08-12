@@ -11,6 +11,7 @@ import Foundation
 protocol DetailsViewModelType {
     var title: String { get }
     var avatarURL: URL? { get }
+    var author: String { get }
 }
 
 class DetailsViewModel: DetailsViewModelType {
@@ -26,5 +27,9 @@ class DetailsViewModel: DetailsViewModelType {
 
     var avatarURL: URL? {
         return URL(string: item.avatar)
+    }
+
+    var author: String {
+        return item.author
     }
 }

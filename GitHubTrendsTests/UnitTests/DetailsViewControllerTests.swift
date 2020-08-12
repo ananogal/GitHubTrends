@@ -18,7 +18,7 @@ class DetailsViewControllerTests: XCTestCase {
 
     override func setUpWithError() throws {
         detailsVC = UIStoryboard.detailsViewController()
-        let item = Repository(name: "name", description: "description", stars: 1, avatar: "")
+        let item = Repository(name: "name", description: "description", stars: 1, avatar: "", author: "author")
         viewModel = MockDetailsViewModel(item: item)
         detailsVC.viewModel = viewModel
     }
@@ -63,20 +63,22 @@ class DetailsViewControllerTests: XCTestCase {
     }
 
     func test_whenLoadingImage_setsTheAvatarImageUrl() {
-        let item = Repository(name: "name", description: "description", stars: 1, avatar: "https://github.com/ananogal.png")
+        let item = Repository(name: "name", description: "description", stars: 1, avatar: "https://github.com/ananogal.png", author: "author")
         viewModel = MockDetailsViewModel(item: item)
         detailsVC.viewModel = viewModel
         detailsVC.loadViewIfNeeded()
 
         XCTAssertNotNil(detailsVC.avatarImageView.image)
     }
+
+    func test_whenLoading_setsTheUserNameToAuthor() {
+        detailsVC.loadViewIfNeeded()
+
+        XCTAssertEqual(detailsVC.nameLabel.text, viewModel.author)
+    }
 }
 
 class MockDetailsViewModel: DetailsViewModelType {
-    var avatarURL: URL? {
-        return URL(string: item.avatar)
-    }
-
     private let item: Repository
 
     init(item:Repository) {
@@ -85,5 +87,13 @@ class MockDetailsViewModel: DetailsViewModelType {
 
     var title: String {
         return item.name
+    }
+
+    var avatarURL: URL? {
+        return URL(string: item.avatar)
+    }
+    
+    var author: String {
+        return item.author
     }
 }
