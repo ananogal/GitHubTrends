@@ -56,6 +56,6 @@ class RepositoriesViewController: UIViewController {
 
 extension RepositoriesViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-
+        
     }
 }

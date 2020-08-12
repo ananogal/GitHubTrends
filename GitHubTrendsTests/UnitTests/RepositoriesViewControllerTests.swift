@@ -23,6 +23,7 @@ class RepositoriesViewControllerTests: XCTestCase {
 
     override func tearDownWithError() throws {
         reposViewController = nil
+        mockViewModel = nil
     }
 
     func test_whenloadingIsDone_setsTitleToGitHubTrends() {
@@ -76,6 +77,8 @@ class RepositoriesViewControllerTests: XCTestCase {
 
         XCTAssertTrue(reposViewController.tableView.numberOfRows(inSection: 0) == mockViewModel.repos.count)
     }
+
+
 }
 
 

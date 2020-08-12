@@ -10,39 +10,36 @@ import XCTest
 import RxSwift
 import RxCocoa
 import RxTest
+import RxBlocking
 
 @testable import GitHubTrends
 
 class GitHubTrendsTests: XCTestCase {
 
-//Given the app is not running
-//When I start the app
-//Then I see a list of trending repositories with project name, stars and description
-//And I can filter then by name
-
     override func setUpWithError() throws {
          continueAfterFailure = false
     }
 
-    func test_whenIStartTheApp_thenIWillSeeAListOfTrendingRepositories() {
+    //Given the app is not running
+    //When I start the app
+    //Then I see a list of trending repositories with project name, stars and description
+    func test_whenIStartTheApp_thenIWillSeeAListOfTrendingRepositories() throws {
         let repositoriesVC = UIStoryboard.repositoriesViewController()
 
-        let viewModel = RepositoriesViewModel()
+        let gateway = Gateway()
+        let viewModel = RepositoriesViewModel(with: gateway)
         repositoriesVC.viewModel = viewModel
 
         let disposeBag = DisposeBag()
         let scheduler = TestScheduler(initialClock: 0)
         var itemsObserver: TestableObserver<[Repository]>!
         itemsObserver = scheduler.createObserver([Repository].self)
-        repositoriesVC.viewModel.items.asObservable().bind(to: itemsObserver).disposed(by: disposeBag)
-
+        viewModel.items.asObservable().bind(to: itemsObserver).disposed(by: disposeBag)
         scheduler.start()
 
         repositoriesVC.loadViewIfNeeded()
 
-        if itemsObserver.events.isEmpty {
-            XCTFail("No Data to Display")
-        }
+        XCTAssertNotNil(try viewModel.items.toBlocking().first())
 
         let cell = repositoriesVC.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! RepositoryCell
         XCTAssertTrue(!cell.descriptionLabel.text!.isEmpty)

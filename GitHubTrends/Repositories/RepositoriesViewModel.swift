@@ -17,13 +17,15 @@ protocol RepositoriesViewModelType {
 class RepositoriesViewModel: RepositoriesViewModelType {
     var items: PublishSubject<[Repository]> = PublishSubject<[Repository]>()
 
-    func loadData() {
-        
-    }
-}
+    private let gateway: GatewayType
 
-struct Repository {
-    let name: String
-    let description: String
-    let stars: Int
+    init(with gateway: GatewayType) {
+        self.gateway = gateway
+    }
+
+    func loadData() {
+        gateway.loadRepositories { [weak self](repositories) in
+            self?.items.onNext(repositories)
+        }
+    }
 }

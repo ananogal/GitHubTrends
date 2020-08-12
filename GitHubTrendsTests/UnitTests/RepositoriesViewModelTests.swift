@@ -7,15 +7,55 @@
 //
 
 import XCTest
+import RxSwift
+import RxTest
+@testable import GitHubTrends
 
 class RepositoriesViewModelTests: XCTestCase {
+    var viewModel: RepositoriesViewModel!
+    var gateway: MockGateway!
 
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        gateway = MockGateway()
+        viewModel = RepositoriesViewModel(with: gateway)
+
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        viewModel = nil
     }
 
+    func test_whenLoadingData_itCallsGetway() {
+
+        viewModel.loadData()
+
+        XCTAssertTrue(gateway.loadRepositoriesWasCalled)
+    }
+
+    func test_whenLoadingData_onSuccess_generatesANewEvent() {
+        let disposeBag = DisposeBag()
+        let scheduler = TestScheduler(initialClock: 0)
+        var itemsObserver: TestableObserver<[Repository]>!
+        itemsObserver = scheduler.createObserver([Repository].self)
+        viewModel.items.asObservable().bind(to: itemsObserver).disposed(by: disposeBag)
+
+        viewModel.loadData()
+
+        XCTAssertEqual(itemsObserver.events.count, 1)
+    }
+}
+
+
+class MockGateway: GatewayType {
+    var repos = [Repository]()
+
+    var loadRepositoriesWasCalled = false
+    func loadRepositories(completion: ([Repository]) -> ()) {
+        loadRepositoriesWasCalled = true
+        
+        let repoOne = Repository(name: "Name 1", description: "Description 1", stars: 1)
+        let repoTwo = Repository(name: "Name 2", description: "Description 2", stars: 2)
+        repos = [repoOne, repoTwo]
+        completion(repos)
+    }
 }
